@@ -1,0 +1,24 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+STAGING_SHARED_MEMORY=1
+STAGING_WRITECOPY=1
+WINEFSYNC=1
+WINEESYNC=1
+
+RADV_FORCE_VRS=2x2
+RADV_DEBUG=novrsflatshading
+RADV_PERFTEST=nggc
+RADV_PERFTEST=gpl
+
+RUSTICL_ENABLE=radeonsi
+OCL_ICD_VENDORS=/etc/OpenCL/vendors/rusticl.icd
+
+LIBVA_DRIVER_NAME=radeonsi
+
+SAL_USE_VCLPLUGIN=gtk3_kde5
+SAL_ENABLESKIA=1
+SAL_FORCESKIA=1
+SAL_SKIA=vulkan
