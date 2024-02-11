@@ -4,7 +4,7 @@ if [ ! -d "~/.var/" ]
 then
    mkdir ~/.var/
 fi
-  
+ 
 if [ ! -d "~/.var/dotfile/" ]
 then
    mkdir ~/.var/dotfile/
