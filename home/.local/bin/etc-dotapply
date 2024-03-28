@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [ ! -d "/etc/dotfiles/" ]
-then
-    sudo mkdir /etc/dotfiles/
-fi
-
-sudo cp -r ~/.var/dotfile/etc/* /etc/dotfiles/
-sudo stow -d /etc/dotfiles/ -t /etc/ .
