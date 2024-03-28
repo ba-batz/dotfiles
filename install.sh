@@ -14,5 +14,4 @@ cp -r ./* ~/.var/dotfile/
 
 chmod a+x ~/.var/dotfile/home/.local/bin/*
 
-exec ~/.var/dotfile/home/.local/bin/dotapply
-exec ~/.var/dotfile/home/.local/bin/etc-dotapply
+~/.var/dotfile/home/.local/bin/ply
