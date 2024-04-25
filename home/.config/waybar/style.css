@@ -1,0 +1,75 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "FiraMono Nerd Font";
+    font-size: 14px;
+    min-height: 30px;
+}
+
+window#waybar {
+    background: black;
+    border-bottom: 3px solid #4C4E52;
+    color: white;
+}
+
+tooltip {
+  background: black;
+  border: 1px solid #4C4E52;
+}
+tooltip label {
+  color: white;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    background: transparent;
+    color: white;
+    border-bottom: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    background: black;
+    border-bottom: 3px solid aqua;
+}
+
+#mode, #clock, #battery {
+    padding: 0 10px;
+}
+
+#mode {
+    background: black;
+    border-bottom: 3px solid #4C4E52;
+}
+
+#clock {
+    background-color: black;
+    border-bottom: 3px solid #4C4E52;
+}
+
+
+#battery {
+    background-color: white;
+    color: black;
+}
+
+#battery.charging {
+    color: white;
+    background-color: green;
+}
+
+@keyframes blink {
+    to {
+        background-color: white;
+        color: black;
+    }
+}
+
+#battery.warning:not(.charging) {
+    background: red;
+    color: white;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

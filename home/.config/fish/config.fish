@@ -1,7 +1,5 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
+set -U fish_greeting
+set -U fish_user_paths $HOME/.local/bin
 abbr ssh 'kitty +kitten ssh'
 abbr mew 'kitty +kitten ssh admin@192.168.1.2'
 abbr wol 'for i in (seq 200); wol --ipaddr=192.168.1.2 --port=9 --wait=3000 40:61:86:01:bc:38; end'

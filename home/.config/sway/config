@@ -1,0 +1,266 @@
+# Variables
+set $mod Mod4
+set $term kitty
+set $menu tofi-run | xargs swaymsg exec --
+set $drun tofi-drun --drun-launch=true
+set $browser firefox
+set $screenshot grim ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+set $slurpshot slurp | grim -g - ~/Images/screenshots/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
+
+set $cl_high #ab00db
+set $cl_indi #d9d8cd
+set $cl_back #231f20
+set $cl_fore #d9d8d8
+set $cl_urge #ee2e24
+
+# Colors                border   bg       text     indi     childborder
+client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
+client.focused_inactive $cl_back $cl_back $cl_fore $cl_back $cl_back
+client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
+client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
+
+# Theme
+set $gnome-schema org.gnome.desktop.interface
+
+exec gsettings set $gnome-schema cursor-theme "Adwaita"
+exec gsettings set $gnome-schema gtk-theme 'Adwaita-dark'
+exec gsettings set $gnome-schema icon-theme "Adwaita"
+exec gsettings set $gnome-schema font-name "Fira Sans"
+
+# Importent environment variables
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+# Allows sway to bind the powerbutton properly.
+exec systemd-inhibit --what=handle-power-key sleep infinity
+
+# workspaces
+set $ws1   1
+set $ws2   2
+set $ws3   3
+set $ws4   4 
+set $ws5   5
+set $ws6   6
+set $ws7   7
+set $ws8   8
+set $ws9   9
+set $ws0   0
+set $wsF1  1F
+set $wsF2  2F
+set $wsF3  3F
+set $wsF4  4F
+set $wsF5  5F
+set $wsF6  6F
+set $wsF7  7F
+set $wsF8  8F
+set $wsF9  9F
+set $wsF10 10F
+set $wsF11 11F
+set $wsF12 12F
+
+# workspace screen output
+workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output DP-1
+workspace $ws4 output DP-1
+workspace $ws5 output DP-1
+workspace $ws6 output DP-1
+workspace $ws7 output DP-1
+workspace $ws8 output DP-1
+workspace $ws9 output DP-1
+workspace $ws10 output DP-1
+workspace $wsF1 output DP-2
+workspace $wsF2 output DP-2
+workspace $wsF3 output DP-2
+workspace $wsF4 output DP-2
+workspace $wsF5 output DP-2
+workspace $wsF6 output DP-2
+workspace $wsF7 output DP-2
+workspace $wsF8 output DP-2
+workspace $wsF9 output DP-2
+workspace $wsF10 output DP-2
+workspace $wsF11 output DP-2
+workspace $wsF12 output DP-2
+
+# Font
+font pango:"FiraMono Nerd Font" Regular 12
+
+# Bar
+bar {
+    status_command waybar
+    mode invisible
+}
+
+# Window borders
+default_border pixel 1
+default_floating_border normal
+hide_edge_borders smart
+
+smart_gaps on
+gaps inner 10
+
+# Input configuration
+input * {
+    xkb_layout de
+    xkb_variant nodeadkeys
+    xkb_options caps:swapescape
+}
+
+# Output configuration
+output * adaptive_sync on
+output DP-1 pos 1920 0 
+output DP-1 bg /home/pik/.var/wallpaper/bg1.avif fill
+output DP-2 pos 0 0 
+output DP-2 bg /home/pik/.var/wallpaper/bg2.avif fill
+
+# Default workspaces for common programs
+assign [class="Spotify Premium"] $wsF12
+assign [app_id="WebCord"] $wsF2
+assign [app_id="org.keepassxc.KeePassXC"] $wsF3
+
+# Shortcuts
+bindsym $mod+Return exec $term
+bindsym $mod+Print exec $screenshot
+bindsym $mod+Shift+Print exec $slurpshot
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+d exec $drun
+bindsym $mod+b exec $browser
+bindsym $mod+e exec pcmanfm
+bindsym $mod+END exec webcord
+
+bindsym $mod+q kill
+bindsym $mod+r reload
+
+# Notifications
+bindsym Control+Space exec makoctl dismiss
+bindsym Control+Shift+Space exec makoctl dismiss --all
+
+# Multimedia
+bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+
+# Gammastep
+bindsym --locked XF86Launch5 exec gammastep -P -O 1500
+bindsym --locked XF86Launch6 exec killall gammastep
+
+# Idle configuration
+exec swayidle -w \
+  before-sleep 'playerctl pause' \
+  before-sleep 'swaylock' \
+  timeout 1800 'swaylock -f' \
+  timeout 1805 'swaymsg "output * power off"' \
+  resume 'swaymsg "output * power on"'
+
+# Move your focus around
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# _move_ the focused window with the same, but add Shift
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# switch to workspace
+bindsym $mod+1   workspace $ws1 
+bindsym $mod+2   workspace $ws2
+bindsym $mod+3   workspace $ws3
+bindsym $mod+4   workspace $ws4
+bindsym $mod+5   workspace $ws5
+bindsym $mod+6   workspace $ws6
+bindsym $mod+7   workspace $ws7
+bindsym $mod+8   workspace $ws8
+bindsym $mod+9   workspace $ws9
+bindsym $mod+0   workspace $ws0
+bindsym $mod+F1  workspace $wsF1
+bindsym $mod+F2  workspace $wsF2
+bindsym $mod+F3  workspace $wsF3
+bindsym $mod+F4  workspace $wsF4
+bindsym $mod+F5  workspace $wsF5
+bindsym $mod+F6  workspace $wsF6
+bindsym $mod+F7  workspace $wsF7
+bindsym $mod+F8  workspace $wsF8
+bindsym $mod+F9  workspace $wsF9
+bindsym $mod+F10 workspace $wsF10
+bindsym $mod+F11 workspace $wsF11
+bindsym $mod+F12 workspace $wsF12
+
+# move focused container to workspace
+bindsym $mod+Shift+1    move container to workspace $ws1
+bindsym $mod+Shift+2    move container to workspace $ws2
+bindsym $mod+Shift+3    move container to workspace $ws3
+bindsym $mod+Shift+4    move container to workspace $ws4
+bindsym $mod+Shift+5    move container to workspace $ws5
+bindsym $mod+Shift+6    move container to workspace $ws6
+bindsym $mod+Shift+7    move container to workspace $ws7
+bindsym $mod+Shift+8    move container to workspace $ws8
+bindsym $mod+Shift+9    move container to workspace $ws9
+bindsym $mod+Shift+0    move container to workspace $ws0
+bindsym $mod+Shift+F1   move container to workspace $wsF1
+bindsym $mod+Shift+F2   move container to workspace $wsF2
+bindsym $mod+Shift+F3   move container to workspace $wsF3
+bindsym $mod+Shift+F4   move container to workspace $wsF4
+bindsym $mod+Shift+F5   move container to workspace $wsF5
+bindsym $mod+Shift+F6   move container to workspace $wsF6
+bindsym $mod+Shift+F7   move container to workspace $wsF7
+bindsym $mod+Shift+F8   move container to workspace $wsF8
+bindsym $mod+Shift+F9   move container to workspace $wsF9
+bindsym $mod+Shift+F10  move container to workspace $wsF10
+bindsym $mod+Shift+F11  move container to workspace $wsF11
+bindsym $mod+Shift+F12  move container to workspace $wsF12
+
+# Layout stuff:
+
+# Split layout
+bindsym $mod+x splith
+bindsym $mod+y splitv
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# move focus to the parent container
+bindsym $mod+a focus parent
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Modes
+mode "resize" {
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # return texto default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+s mode "resize"
+
+set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (p) poweroff, (R) UEFI
+mode "$mode_system" {
+    bindsym l exec swaylock
+    bindsym e exit
+    bindsym s exec systemctl suspend
+    bindsym r exec systemctl reboot
+    bindsym p exec systemctl poweroff
+    bindsym Shift+r exec systemctl reboot --firmware-setup
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+HOME mode "$mode_system"
