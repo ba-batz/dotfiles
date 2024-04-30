@@ -13,7 +13,6 @@ OCL_ICD_VENDORS=/etc/OpenCL/vendors/rusticl.icd
 QT_QPA_PLATFORM=wayland
 QT_STYLE_OVERRIDE=Adwaita-Dark
 QT_VULKAN_LIB=/usr/lib/libvulkan.so
-QT_WAYLAND_DECORATION=adwaita
 QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 RADV_DEBUG=novrsflatshading
 #RADV_FORCE_VRS=2x2
