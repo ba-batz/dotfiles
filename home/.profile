@@ -1,4 +1,3 @@
-export CALCHISTFILE=/home/pik/.cache/calc_history
 export GNUPGHOME=/home/pik/.local/share/gnupg
 export _JAVA_OPTIONS='-Djava.util.prefs.userRoot=/home/pik/.config/java -XX:+UseZGC'
 export XDG_CACHE_HOME=/home/pik/.cache

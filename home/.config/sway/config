@@ -111,7 +111,6 @@ output DP-2 pos 0 0
 output DP-2 bg /home/pik/.var/wallpaper/bg2.avif fill
 
 # Default workspaces for common programs
-assign [title="Spotify Premium"] $wsF10
 assign [app_id="WebCord"] $wsF1
 assign [app_id="org.keepassxc.KeePassXC"] $wsF2
 
@@ -237,19 +236,6 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
-
-# Modes
-mode "resize" {
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # return texto default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+s mode "resize"
 
 set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (p) poweroff, (R) UEFI
 mode "$mode_system" {

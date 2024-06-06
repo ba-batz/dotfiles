@@ -27,10 +27,9 @@
     ],
     "modules-right": [
         "network",
-        "battery",
-        "tray",
         "clock#date",
-        "clock#time"
+        "clock#time",
+	"tray"
     ],
 
 
@@ -60,7 +59,7 @@
 
     "clock#time": {
         "interval": 1,
-        "format": "{:%H:%M:%S}",
+        "format": "{:%H:%M}",
         "tooltip": false
     },
 
@@ -73,7 +72,7 @@
     "network": {
         "interval": 5,
         "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
-        "format-ethernet": "E {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-ethernet": "E {ifname}", // Icon: ethernet
         "format-disconnected": "⚠  Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}"
     },
