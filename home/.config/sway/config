@@ -3,7 +3,6 @@ set $mod Mod4
 set $term kitty
 set $menu tofi-run | xargs swaymsg exec --
 set $drun tofi-drun --drun-launch=true
-set $browser firefox
 set $screenshot grim -o ~/Medien/$(date +'%s_screenshot.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
 set $slurpshot grim -o ~/Medien/$(date +'%s_screenshot.png') -g "$(slurp)" - | wl-copy
 
@@ -111,18 +110,17 @@ output DP-2 pos 0 0
 output DP-2 bg /home/pik/.var/wallpaper/bg2.avif fill
 
 # Default workspaces for common programs
-assign [app_id="WebCord"] $wsF1
-assign [app_id="org.keepassxc.KeePassXC"] $wsF2
+#asign [app_id=""] $ws
 
 # Shortcuts
 bindsym $mod+Return exec $term
 bindsym $mod+Print exec $screenshot
 bindsym $mod+Shift+Print exec $slurpshot
-bindsym $mod+d exec $menu
-bindsym $mod+Shift+d exec $drun
-bindsym $mod+b exec $browser
+bindsym $mod+d exec $drun
+bindsym $mod+Shift+d exec $menu
+bindsym $mod+b exec flatpak run org.mozilla.firefox
 bindsym $mod+e exec nemo
-bindsym $mod+END exec webcord
+bindsym $mod+END exec flatpak run dev.vencord.Vesktop
 
 bindsym $mod+q kill
 bindsym $mod+r reload
@@ -237,14 +235,14 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (p) poweroff, (R) UEFI
+set $mode_system System: (l) lock, (e) logout, (r) reboot, (p) poweroff, (R), (W)
 mode "$mode_system" {
     bindsym l exec swaylock
     bindsym e exit
-    bindsym s exec systemctl suspend
     bindsym r exec systemctl reboot
     bindsym p exec systemctl poweroff
     bindsym Shift+r exec systemctl reboot --firmware-setup
+    bindsym Shift+w exec systemctl reboot --boot-loader-entry=auto-windows
 
     # return to default mode
     bindsym Return mode "default"
