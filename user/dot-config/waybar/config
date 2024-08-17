@@ -44,15 +44,14 @@
             "critical": 15
         },
         // Connected to AC
-        "format": "   {icon}  {capacity}%", // Icon: bolt
+        "format": "   {icon}  {capacity}%", // Icon: bolt
         // Not connected to AC
         "format-discharging": "{icon}  {capacity}%",
         "format-icons": [
-            "", // Icon: battery-full
-            "", // Icon: battery-three-quarters
-            "", // Icon: battery-half
-            "", // Icon: battery-quarter
-            ""  // Icon: battery-empty
+            "oo",
+            "o0",
+            "0o",
+	    "00"
         ],
         "tooltip": true
     },
@@ -65,20 +64,20 @@
 
     "clock#date": {
       "interval": 10,
-      "format": "   {:%e %b %Y}", // Icon: calendar-alt
+      "format": "   % {:%e %b %Y}", // Icon: calendar-alt
       "tooltip-format": "{:%e %B %Y}"
     },
 
     "network": {
         "interval": 5,
-        "format-wifi": "   {essid} ({signalStrength}%)", // Icon: wifi
-        "format-ethernet": "  󰈀 {ifname}", // Icon: ethernet
-        "format-disconnected": "  ⚠ Disconnected",
+        "format-wifi": "   (({essid}))", // Icon: wifi
+        "format-ethernet": "   E {ifname}", // Icon: ethernet
+        "format-disconnected": "  404 Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}"
     },
 
     "sway/mode": {
-        "format": "<span style=\"italic\"> {}</span>", // Icon: expand-arrows-alt
+        "format": "<span style=\"italic\">_ {}</span>", // Icon: expand-arrows-alt
         "tooltip": false
     },
 
@@ -92,9 +91,9 @@
         "disable-scroll": true,
         "format": "{icon} {name}",
         "format-icons": {
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "urgent": "?",
+            "focused": "!",
+            "default": "."
         }
     },
 

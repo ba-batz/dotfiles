@@ -30,7 +30,6 @@ set $cl_urge #ee2e24
 exec gsettings set org.gnome.desktop.interface cursor-theme "Adwaita" &
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark' &
 exec gsettings set org.gnome.desktop.interface icon-theme "Adwaita" &
-exec gsettings set org.gnome.desktop.interface font-name "Fira Sans" &
 
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK &
 exec systemd-inhibit --what=handle-power-key sleep infinity &
@@ -112,9 +111,6 @@ client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
 client.focused_inactive $cl_back $cl_back $cl_fore $cl_back $cl_back
 client.unfocused        $cl_back $cl_back $cl_fore $cl_back $cl_back
 client.urgent           $cl_urge $cl_urge $cl_fore $cl_urge $cl_urge
-
-##Font
-font pango:"FiraMono Nerd Font" Regular 12
 
 ##Bar
 bar {
