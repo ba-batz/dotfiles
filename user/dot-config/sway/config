@@ -132,6 +132,11 @@ input type:keyboard {
     xkb_options caps:swapescape
 }
 
+input type:mouse {
+   accel_profile flat
+
+}
+
 ##Output configuration
 workspace $ws_1 output DP-1
 workspace $ws_2 output DP-1
@@ -142,17 +147,19 @@ workspace $ws_6 output DP-3
 
 output DP-1 {
     render_bit_depth 10
-    mode 2560x1440@239.970Hz
-    pos 3840 2447
-    scale 1.3
+    mode 2560x1440@119.998Hz
+    pos 1280 720
+    scale 1.6
+    adaptive_sync off
     bg /home/pik/.var/wallpaper/lain-hacking.png fill
 }
 
 output DP-2 {
     render_bit_depth 8
     mode 1920x1080@60.000Hz
-    pos 1920 2447
-    scale 1
+    pos 0 720
+    scale 1.5
+    adaptive_sync off
     bg /home/pik/.var/wallpaper/lain-green.png fill
     dpms off
 }
@@ -160,8 +167,9 @@ output DP-2 {
 output DP-3 {
     render_bit_depth 8
     mode 1920x1080@60.000Hz
-    pos 2625 1367
-    scale 1
+    pos 0 0
+    scale 1.5
+    adaptive_sync off
     bg /home/pik/.var/wallpaper/lain-rainbow.png fill
     dpms off
 }
