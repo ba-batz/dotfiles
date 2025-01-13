@@ -8,8 +8,8 @@ set $ac_slurpshot grim -o ~/Medien/$(date +'%s_screenshot.png') -g "$(slurp)" - 
 
 set $ap_term kitty
 set $ap_file nemo
-set $ap_browser flatpak run org.mozilla.firefox
-set $ap_discord flatpak run dev.vencord.Vesktop
+set $ap_browser firefox
+set $ap_discord vesktop
 
 set $ws_1 x
 set $ws_2 c
@@ -41,7 +41,8 @@ exec swayidle -w \
   before-sleep 'swaylock' \
   timeout 1600 'swaylock -f' \
   timeout 1605 'swaymsg "output * dpms off"' \
-  resume 'swaymsg "output DP-1 dpms on"' &
+  resume 'swaymsg "output * dpms on"' &
+  
 
 ##Menu
 mode "$md_system" {
@@ -151,7 +152,7 @@ output DP-1 {
     pos 1280 0
     scale 1.6
     adaptive_sync off
-    bg /home/pik/.var/wallpaper/lain-hacking.png fill
+    bg /home/batz/.var/wallpaper/lain-hacking.png fill
 }
 
 output DP-2 {
@@ -160,5 +161,5 @@ output DP-2 {
     pos 0 181
     scale 1.5
     adaptive_sync off
-    bg /home/pik/.var/wallpaper/lain-green.png fill
+    bg /home/batz/.var/wallpaper/lain-green.png fill
 }
