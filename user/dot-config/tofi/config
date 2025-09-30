@@ -5,7 +5,7 @@ horizontal = true
 font-size = 12
 hint-font = false
 prompt-text = " run: "
-font = /usr/share/fonts/TTF/DejaVuSans.ttf
+font = /usr/share/fonts/ttf-linux-libertine/LinLibertine_RBah.ttf
 outline-width = 0
 border-width = 0
 background-color = #000000
@@ -15,4 +15,4 @@ padding-top = 6
 padding-bottom = 0
 padding-left = 0
 padding-right = 0
-ascii-input = true
+ascii-input true

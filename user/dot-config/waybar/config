@@ -29,6 +29,7 @@
         "network",
         "clock#date",
         "clock#time",
+	"battery",
 	"tray"
     ],
 
@@ -38,58 +39,58 @@
     // -------------------------------------------------------------------------
 
     "battery": {
-        "interval": 10,
+        "interval": 20,
         "states": {
-            "warning": 30,
-            "critical": 15
+            "warning": 10,
+            "critical": 5
         },
         // Connected to AC
-        "format": "   {icon}  {capacity}%", // Icon: bolt
+        "format": "    {icon} {capacity}%  ", // Icon: bolt
         // Not connected to AC
-        "format-discharging": "{icon}  {capacity}%",
+        "format-discharging": "    {icon} {capacity}%  ",
         "format-icons": [
-            "oo",
-            "o0",
-            "0o",
-	    "00"
+            "~~",
+            "~°",
+            "°~",
+	    "°°"
         ],
-        "tooltip": true
+        "tooltip": false
     },
 
     "clock#time": {
-        "interval": 1,
-        "format": "{:%H:%M}",
+        "interval": 15,
+        "format": "    {:%H:%M}",
         "tooltip": false
     },
 
     "clock#date": {
-      "interval": 10,
-      "format": "   % {:%e %b %Y}", // Icon: calendar-alt
-      "tooltip-format": "{:%e %B %Y}"
+      "interval": 6000,
+      "format": "    # {:%e %b %Y}", // Icon: calendar-alt
+      "tooltip": false
     },
 
     "network": {
-        "interval": 5,
-        "format-wifi": "   (({essid}))", // Icon: wifi
-        "format-ethernet": "   E {ifname}", // Icon: ethernet
-        "format-disconnected": "  404 Disconnected",
+        "interval": 60,
+        "format-wifi":"(({essid}))", // Icon: wifi
+        "format-ethernet": "E {ifname}", // Icon: ethernet
+        "format-disconnected": "404 Disconnected",
         "tooltip-format": "{ifname}: {ipaddr}"
     },
 
     "sway/mode": {
-        "format": "<span style=\"italic\">_ {}</span>", // Icon: expand-arrows-alt
+        "format": "<span style=\"italic\">> {}</span>", // Icon: expand-arrows-alt
         "tooltip": false
     },
 
     "sway/window": {
-        "format": "{}",
+        "format": "[{}]",
         "max-length": 120
     },
 
     "sway/workspaces": {
         "all-outputs": false,
         "disable-scroll": true,
-        "format": "{icon} {name}",
+        "format": "{name}{icon}",
         "format-icons": {
             "urgent": "?",
             "focused": "!",

@@ -1,7 +1,8 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: sans-serif;
+    font-family: "Linux Libertine";
+    font-weight: bold;
     font-size: 14px;
     min-height: 30px;
 }
@@ -32,10 +33,6 @@ tooltip label {
     border-bottom: 3px solid aqua;
 }
 
-#mode, #clock, #battery {
-    padding: 0 10px;
-}
-
 #mode {
     background: black;
     border-bottom: 3px solid #4C4E52;
@@ -46,27 +43,32 @@ tooltip label {
     border-bottom: 3px solid #4C4E52;
 }
 
+#network {
+    background-color: black;
+    border-bottom: 3px solid #4C4E52;
+}
 
 #battery {
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
+    border-bottom: 3px solid #4C4E52;
 }
 
 #battery.charging {
-    color: white;
-    background-color: green;
+    color: green;
+    background-color: black;
 }
 
 @keyframes blink {
     to {
-        background-color: white;
-        color: black;
+        background-color: black;
+        color: red;
     }
 }
 
 #battery.warning:not(.charging) {
-    background: red;
-    color: white;
+    background: black;
+    color: black;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);

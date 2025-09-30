@@ -1,6 +1,6 @@
 [user]
-	email = batz.cool@proton.me
-	name = ba-batz
+	email = johndoe@example.com
+	name = John Doe
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
@@ -9,3 +9,5 @@
 	helper = !/usr/bin/gh auth git-credential
 [core]
 	editor = nvim
+[commit]
+	gpgsign = false
