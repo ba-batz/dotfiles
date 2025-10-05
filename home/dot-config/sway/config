@@ -1,15 +1,15 @@
 ##Variables
 set $ky_mod Mod4
 
-set $ac_menu tofi-run | xargs swaymsg exec --
-set $ac_drun tofi-drun --drun-launch=true
-set $ac_screenshot grim -o ~/Medien/$(date +'%s_screenshot.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
-set $ac_slurpshot grim -o ~/Medien/$(date +'%s_screenshot.png') -g "$(slurp)" - | wl-copy
+set $ac_menu rofi -show run
+set $ac_drun rofi -show drun
+set $ac_screenshot grim -o ~/Desktop/Fotos/screenshots/$(date +'%s_screenshot.png') -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | wl-copy
+set $ac_slurpshot grim -o ~/Desktop/Fotos/screenshots/$(date +'%s_screenshot.png') -g "$(slurp)" - | wl-copy
 
 set $ap_term foot
 set $ap_file nemo
 set $ap_browser firefox
-set $ap_discord vesktop
+set $ap_discord flatpak run dev.vencord.Vesktop
 
 set $ws_1 x
 set $ws_2 c
@@ -25,14 +25,6 @@ set $cl_indi #d9d8cd
 set $cl_back #231f20
 set $cl_fore #d9d8d8
 set $cl_urge #ee2e24
-
-##Autostart
-exec gsettings set org.gnome.desktop.interface cursor-theme "Adwaita" &
-exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark' &
-exec gsettings set org.gnome.desktop.interface icon-theme "Adwaita" &
-
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK &
-exec systemd-inhibit --what=handle-power-key sleep infinity &
 
 exec mako &
 
@@ -95,11 +87,11 @@ bindsym $ky_mod+Shift+$ws_6 move container to workspace $ws_6
 bindsym $ky_mod+Space input type:touchpad events toggle disabled enabled
 bindsym $ky_mod+Return exec $ap_term
 
-bindsym --locked XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- &
-bindsym --locked XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ &
-bindsym --locked XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle &
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set 1+
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 1-
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle &
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% &
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% &
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 1+ &
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 1- &
 
 ##Colors                border   bg       text     indi     childborder
 client.focused          $cl_high $cl_high $cl_fore $cl_indi $cl_high
@@ -133,5 +125,5 @@ input type:touchpad {
 
 output eDP-1 {
     scale 1.6
-    bg /home/batz/.var/wallpaper/lain-bg.png fill
+    bg /home/batz/Desktop/System/wallpaper/lain-bg.png fill
 }

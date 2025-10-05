@@ -1,1 +1,1 @@
-﻿stow --dotfiles -d $HOME/.var/dotfile/ -t $HOME -R home
+﻿stow --dotfiles -d $HOME/Desktop/System/dotfile/ -t $HOME -R home
