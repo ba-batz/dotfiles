@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/batz/Desktop/Wiki/content'
+let g:netrw_dirhist_8='/home/batz/batz.knife.cat/themes/cyberalien/layouts/_default'
+let g:netrw_dirhist_7='/home/batz/batz.knife.cat/themes/cyberalien/layouts/partials'
+let g:netrw_dirhist_6='/home/batz/batz.knife.cat/themes/cyberalien/layouts/_default'
+let g:netrw_dirhist_5='/home/batz/batz.knife.cat/themes/cyberalien/layouts'
+let g:netrw_dirhist_4='/home/batz/Desktop/System/dotfile/home/dot-local/bin'
+let g:netrw_dirhist_3='/home/batz/Desktop/Dokumente'
+let g:netrw_dirhist_2='/home/batz/Desktop'
+let g:netrw_dirhist_1='/home/batz/Desktop/Wiki'

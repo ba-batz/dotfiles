@@ -1,0 +1,4 @@
+#!/bin/sh
+
+qrencode -t UTF8 -l H "WIFI:S:togepi;T:WPA;P:u3miHcaKKCVcRLLLLw7doNThYbHkU37F;;h";
+printf "SSID: togepi\nWPA3: u3miHcaKKCVcRLLLLw7doNThYbHkU37F" | cowsay -n;

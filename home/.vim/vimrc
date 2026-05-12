@@ -1,0 +1,8 @@
+set nocompatible
+filetype plugin on
+syntax on
+
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': 'md', 'path': '~/Desktop/Wiki/content/', 'index': '_index'}]
+
+let g:vimwiki_global_ext = 0
+

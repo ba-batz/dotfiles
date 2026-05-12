@@ -1,0 +1,113 @@
+xwayland disable
+
+##Variables
+set $mod Mod4
+
+set $menu tofi-drun | xargs swaymsg exec -- 
+set $slurpshot bash -c 'f=~/Pictures/screenshots/$(date +%s)_screenshot.png; grim -g "$(slurp)" "$f" && wl-copy < "$f"'
+set $screenshot bash -c 'f=~/Pictures/screenshots/$(date +%s)_screenshot.png; grim -o "$(swaymsg -t get_outputs | jq -r ".[] | select(.focused) | .name")" "$f" && wl-copy < "$f"'
+
+set $term footclient
+set $browser firefox
+
+set $high #ab00db
+set $indi #d9d8cd
+set $back #231f20
+set $fore #d9d8d8
+set $urge #ee2e24
+
+seat seat0 xcursor_theme Wii-Pointer-P1 24
+
+exec foot --server &
+
+exec swayidle -w \
+  before-sleep 'playerctl pause' \
+  before-sleep 'swaylock' \
+  timeout 600 'swaylock -f' \
+  timeout 605 'swaymsg "output * dpms off"' \
+  resume 'swaymsg "output * dpms on"' &
+  
+
+##Shortcuts
+
+bindsym $mod+q kill
+bindsym $mod+w fullscreen
+bindsym $mod+r exec $browser
+bindsym $mod+z output * transform 90
+bindsym $mod+u exec $slurpshot
+bindsym $mod+Shift+u exec $screenshot
+
+bindsym $mod+s reload
+bindsym $mod+d exec $menu
+bindsym $mod+f splith
+bindsym $mod+g splitv
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+y workspace y
+bindsym $mod+x workspace x
+bindsym $mod+c workspace c
+bindsym $mod+v workspace v
+bindsym $mod+b workspace b
+bindsym $mod+n workspace n
+bindsym $mod+Shift+y move container to workspace y
+bindsym $mod+Shift+x move container to workspace x
+bindsym $mod+Shift+c move container to workspace c
+bindsym $mod+Shift+v move container to workspace v
+bindsym $mod+Shift+b move container to workspace b
+bindsym $mod+Shift+n move container to workspace n
+
+bindsym $mod+Space input type:touchpad events toggle disabled enabled
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec $term vim
+
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle &
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% &
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% &
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set 1+
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 1-
+
+##Colors                border   bg       text     indi     childborder
+client.focused          $high $high $fore $indi $high
+client.focused_inactive $back $back $fore $back $back
+client.unfocused        $back $back $fore $back $back
+client.urgent           $urge $urge $fore $urge $urge
+
+##Bar
+bar {
+    mode invisible
+}
+
+##Window borders
+default_border pixel 1
+smart_borders no_gaps
+gaps outer 0
+gaps inner 0
+
+##Input configuration
+input type:keyboard {
+    xkb_layout de
+}
+
+input type:touchpad {
+    events disabled
+    natural_scroll enabled
+}
+
+output eDP-1 {
+    scale 1.4
+    bg /home/batz/Desktop/System/wallpaper/laptop.png fill
+}
+
+output 'LG Electronics LG ULTRAGEAR+ 303NTEP3Y292' {
+    render_bit_depth 10
+    adaptive_sync on
+    scale 1.6
+    bg /home/batz/Desktop/System/wallpaper/desktop.jpg fill
+}
